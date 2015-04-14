@@ -3,6 +3,12 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
+gem 'neo4j', '~> 4.1.1'
+gem 'neo4j-core', '~> 4.0.0'
+gem 'httparty'
+gem 'zip'
+
+
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do

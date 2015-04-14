@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "neo4j_test"
   gem.homepage = "http://github.com/Swimminschrage/neo4j_test"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Installs/Autostarts a Neo4j instance for your tests}
+  gem.description = %Q{Installs/Autostarts a Neo4j instance for your tests}
   gem.email = "Swimminschrage@gmail.com"
   gem.authors = ["Swimminschrage"]
   # dependencies defined in Gemfile
