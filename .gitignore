@@ -1,6 +1,12 @@
 ## RubyMine files
 .idea/
 
+## Downloaded/Local versions of neo4j
+neo4j-*.tar.gz
+neo4j-*.zip
+
+## Gems shouldn't check in their Gemfile.lock
+Gemfile.lock
 
 *.gem
 *.rbc
