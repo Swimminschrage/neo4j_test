@@ -1,3 +1,7 @@
+## RubyMine files
+.idea/
+
+
 *.gem
 *.rbc
 /.config
