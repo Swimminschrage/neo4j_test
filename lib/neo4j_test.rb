@@ -1,6 +1,7 @@
 require 'neo4j'
 require 'net/http'
 require 'neo4j_test/neo4j_server'
+require 'neo4j_test/installer'
 
 # Based off of the setup uses for SunspotTest
 module Neo4jTest
