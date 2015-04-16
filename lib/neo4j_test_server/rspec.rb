@@ -1,4 +1,4 @@
-require 'neo4j_test'
+require 'neo4j_test_server'
 require 'rspec'
 
 RSpec.configure do |c|
@@ -7,7 +7,7 @@ RSpec.configure do |c|
     Neo4jTest.stub
   end
 
-  c.before(:each, search: true) do
+  c.before(:each, neo4j: true) do
     puts 'Running using actual Neo4j instance....'
     Neo4jTest.unstub
     Neo4jTest.setup_neo4j

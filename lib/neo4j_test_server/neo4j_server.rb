@@ -1,4 +1,4 @@
-require 'neo4j_test/java'
+require 'neo4j_test_server/java'
 require 'os'
 require 'httparty'
 require 'zip'

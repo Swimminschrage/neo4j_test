@@ -14,8 +14,8 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.name = 'neo4j_test'
-  gem.homepage = 'http://github.com/Swimminschrage/neo4j_test'
+  gem.name = 'neo4j_test_server'
+  gem.homepage = 'http://github.com/Swimminschrage/neo4j_test_server'
   gem.license = 'MIT'
   gem.summary = %{Installs/Autostarts a Neo4j instance for your tests}
   gem.description = %Q{Installs/Autostarts a Neo4j instance for your tests}
@@ -44,7 +44,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "neo4j_test #{version}"
+  rdoc.title = "neo4j_test_server #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

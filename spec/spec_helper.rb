@@ -19,7 +19,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'rspec'
 require 'rspec/mocks'
-require 'neo4j_test'
+require 'neo4j_test_server'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.

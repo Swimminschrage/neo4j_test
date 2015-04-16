@@ -63,7 +63,6 @@ module Neo4jTest
               end
             end
             FileUtils.mv "neo4j-#{edition}", install_location
-            #FileUtils.rm downloaded_file
           end
 
           # Install if running with Admin Privileges
@@ -75,7 +74,6 @@ module Neo4jTest
         else
           `tar -xvf #{downloaded_file}`
           `mv neo4j-#{edition} #{install_location}`
-          #`rm #{downloaded_file}`
           puts 'Neo4j Installed in to neo4j directory.'
         end
       end
