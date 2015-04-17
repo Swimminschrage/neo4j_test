@@ -128,8 +128,9 @@ module Neo4jTest
         source_text
       end
 
-      # Defining a method that represents the current location of this file for testing purposes since I cant seem to
-      # be able to mock out "__FILE__" in the rspec tests.  I CAN however mock out this method during testing... :-)
+      # Defining a method that represents the current location of this file for testing purposes since I cant
+      # seem to be able to mock out "__FILE__" in the rspec tests.  I CAN however mock out this method during
+      # testing... :-)
       def here
         __FILE__
       end

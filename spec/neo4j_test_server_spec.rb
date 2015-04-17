@@ -20,7 +20,7 @@ describe 'Neo4jTest' do
 
         # Execute the method 3 times
         3.times do
-          Neo4jTestServer::start_neo4j_server
+          Neo4jTestServer.start_neo4j_server
         end
       end
 
@@ -28,9 +28,9 @@ describe 'Neo4jTest' do
         allow(Neo4jTestServer).to receive(:neo4j_running?).and_return(false)
 
         # Set the timeout to a more reasonable time for this test
-        Neo4jTestServer::neo4j_startup_timeout = 4 #seconds
+        Neo4jTestServer.neo4j_startup_timeout = 4 #seconds
 
-        expect{ Neo4jTestServer::start_neo4j_server }.to raise_error(Neo4jTestServer::TimeoutError)
+        expect { Neo4jTestServer.start_neo4j_server }.to raise_error(Neo4jTestServer::TimeoutError)
       end
     end
   end
