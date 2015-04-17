@@ -4,7 +4,7 @@ require 'neo4j_test_server/neo4j_server'
 require 'neo4j_test_server/installer'
 
 # Based off of the setup uses for SunspotTest
-module Neo4jTest
+module Neo4jTestServer
   class TimeoutError < StandardError; end
   class << self
     attr_writer :neo4j_startup_timeout
@@ -15,16 +15,7 @@ module Neo4jTest
     end
 
     def setup_neo4j
-      unstub
       start_neo4j_server
-    end
-
-    def stub
-      #TODO: Ensure that all calls to Neo4j go through the mock instead of hitting the real server
-    end
-
-    def unstub
-      #TODO: Ensure that any existing stubbing of Neo4j calls is reversed
     end
 
     def start_neo4j_server
