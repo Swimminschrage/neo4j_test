@@ -33,7 +33,7 @@ module Neo4jTest
     end
 
     def bind_address
-      @bind_address ||= 'localhost'
+      @bind_address ||= '127.0.0.1'
     end
 
     def port

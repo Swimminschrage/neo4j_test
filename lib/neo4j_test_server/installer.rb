@@ -15,12 +15,16 @@ module Neo4jTest
         rake_auth_toggle :disable
       end
 
-      def file_name
-        OS::Underlying.windows? ? 'neo4j.zip' : 'neo4j-unix.tar.gz'
+      def file_name(edition = '')
+        suffix = OS::Underlying.windows? ? 'neo4j.zip' : 'neo4j-unix.tar.gz'
+        prefix = edition.empty? ? '' : "#{edition}-"
+
+        [prefix, suffix].join ''
       end
 
-      def download_to
-        file_name
+      def download_to(edition = '')
+        # We want to ensure that we download the Neo4j archive to the gem location.  Not the project's location
+        File.join(File.dirname(here), file_name(edition))
       end
 
       def download_url(edition)
@@ -28,25 +32,25 @@ module Neo4jTest
       end
 
       def download_neo4j_unless_exists(edition)
-        download_neo4j(edition) unless File.exist?(download_to)
-        download_to
+        download_neo4j(edition) unless File.exist?(download_to(edition))
+        download_to(edition)
       end
 
       def download_neo4j(edition)
         success = false
 
-        File.open(download_to, 'wb') do |file|
+        File.open(download_to(edition), 'wb') do |file|
           file << request_url(download_url(edition))
           success = true
         end
 
-        download_to
+        download_to(edition)
       ensure
         File.delete(file_name) unless success
       end
 
       def unzip_neo4j(edition)
-        downloaded_file = download_to
+        downloaded_file = download_to(edition)
 
         if OS::Underlying.windows?
           # Extract and move to neo4j directory
@@ -122,6 +126,12 @@ module Neo4jTest
           source_text = set_property(source_text, key, status_string)
         end
         source_text
+      end
+
+      # Defining a method that represents the current location of this file for testing purposes since I cant seem to
+      # be able to mock out "__FILE__" in the rspec tests.  I CAN however mock out this method during testing... :-)
+      def here
+        __FILE__
       end
     end
   end
