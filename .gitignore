@@ -8,6 +8,9 @@ neo4j-*.zip
 ## Gems shouldn't check in their Gemfile.lock
 Gemfile.lock
 
+#Ignore local ruby-version and ruby-gemset files
+.ruby-version
+.ruby-gemset
 *.gem
 *.rbc
 /.config
