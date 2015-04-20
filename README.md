@@ -27,10 +27,10 @@ require 'sunspot_test/rspec'
 This gem will automatically startup a Neo4j server running locally for testing purposes.  The default server starts at
 [http://localhost:7474](http://localhost:7474).
 
-The gem also provides rspec hooks for tests that require Neo4j without requiring the server to be started for all of
+This gem also provides rspec hooks for tests that require Neo4j without requiring the server to be started for all of
 your tests.
 
-## Writing test that use Neo4jTestServer
+## Writing tests that use Neo4jTestServer
 
 In `spec_helper.rb`
 ```ruby
