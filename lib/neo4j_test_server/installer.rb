@@ -55,13 +55,13 @@ module Neo4jTest
         clear_install_location
 
         if OS::Underlying.windows?
-          unzip_for_windows downloaded_file
+          unzip_for_windows downloaded_file, edition
         else
-          unzip_for_unix downloaded_file
+          unzip_for_unix downloaded_file, edition
         end
       end
 
-      def unzip_for_windows(downloaded_file)
+      def unzip_for_windows(downloaded_file, edition)
         # Extract and move to neo4j directory
         unless File.exist?(install_location)
           Zip::ZipFile.open(downloaded_file) do |zip_file|
@@ -85,7 +85,7 @@ module Neo4jTest
         end
       end
 
-      def unzip_for_unix(downloaded_file)
+      def unzip_for_unix(downloaded_file, edition)
         `tar -xvf #{downloaded_file}`
         `mv neo4j-#{edition} #{install_location}`
         puts 'Neo4j Installed in to neo4j directory.'
