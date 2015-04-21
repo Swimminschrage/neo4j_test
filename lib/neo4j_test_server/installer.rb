@@ -52,6 +52,8 @@ module Neo4jTest
       def unzip_neo4j(edition)
         downloaded_file = download_to(edition)
 
+        clear_install_location
+
         if OS::Underlying.windows?
           # Extract and move to neo4j directory
           unless File.exist?(install_location)
@@ -97,6 +99,10 @@ module Neo4jTest
         path = File.expand_path('../../../tmp/db/neo4j', __FILE__)
         FileUtils.mkdir_p(path)
         "#{path}/#{get_environment}"
+      end
+
+      def clear_install_location
+        FileUtils.rmtree(install_location)
       end
 
       def config_location
