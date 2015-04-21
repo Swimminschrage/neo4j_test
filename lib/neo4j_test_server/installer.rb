@@ -24,7 +24,7 @@ module Neo4jTest
 
       def download_to(edition = '')
         # We want to ensure that we download the Neo4j archive to the gem location.  Not the project's location
-        File.join(File.dirname(here), file_name(edition))
+        File.join(File.expand_path('../../..',here), file_name(edition))
       end
 
       def download_url(edition)

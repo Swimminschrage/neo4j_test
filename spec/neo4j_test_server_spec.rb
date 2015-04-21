@@ -116,7 +116,7 @@ describe 'Neo4jTest' do
 
           it 'returns the correct save to location' do
             allow(OS::Underlying).to receive(:windows?).and_return is_windows?
-            allow(Neo4jTest::Installer).to receive(:here).and_return("#{pwd}/test.rb")
+            allow(Neo4jTest::Installer).to receive(:here).and_return("#{pwd}/lib/anotherfolder/test.rb")
             expect(Neo4jTest::Installer.download_to(edition)).to eq expected_download_to
           end
         end
