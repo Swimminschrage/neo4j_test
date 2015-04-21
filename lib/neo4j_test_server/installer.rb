@@ -24,7 +24,7 @@ module Neo4jTest
 
       def download_to(edition = '')
         # We want to ensure that we download the Neo4j archive to the gem location.  Not the project's location
-        File.join(File.expand_path('../../..',here), file_name(edition))
+        File.join(File.expand_path('../../..', here), file_name(edition))
       end
 
       def download_url(edition)
@@ -55,33 +55,40 @@ module Neo4jTest
         clear_install_location
 
         if OS::Underlying.windows?
-          # Extract and move to neo4j directory
-          unless File.exist?(install_location)
-            Zip::ZipFile.open(downloaded_file) do |zip_file|
-              zip_file.each do |f|
-                f_path = File.join('.', f.name)
-                FileUtils.mkdir_p(File.dirname(f_path))
-                begin
-                  zip_file.extract(f, f_path) unless File.exist?(f_path)
-                rescue
-                  puts "#{f.name} failed to extract."
-                end
+          unzip_for_windows downloaded_file
+        else
+          unzip_for_unix downloaded_file
+        end
+      end
+
+      def unzip_for_windows(downloaded_file)
+        # Extract and move to neo4j directory
+        unless File.exist?(install_location)
+          Zip::ZipFile.open(downloaded_file) do |zip_file|
+            zip_file.each do |f|
+              f_path = File.join('.', f.name)
+              FileUtils.mkdir_p(File.dirname(f_path))
+              begin
+                zip_file.extract(f, f_path) unless File.exist?(f_path)
+              rescue
+                puts "#{f.name} failed to extract."
               end
             end
-            FileUtils.mv "neo4j-#{edition}", install_location
           end
-
-          # Install if running with Admin Privileges
-          if `reg query "HKU\\S-1-5-19"`.size > 0
-            `"#{install_location}/bin/neo4j install"`
-            puts 'Neo4j Installed as a service.'
-          end
-
-        else
-          `tar -xvf #{downloaded_file}`
-          `mv neo4j-#{edition} #{install_location}`
-          puts 'Neo4j Installed in to neo4j directory.'
+          FileUtils.mv "neo4j-#{edition}", install_location
         end
+
+        # Install if running with Admin Privileges
+        if `reg query "HKU\\S-1-5-19"`.size > 0
+          `"#{install_location}/bin/neo4j install"`
+          puts 'Neo4j Installed as a service.'
+        end
+      end
+
+      def unzip_for_unix(downloaded_file)
+        `tar -xvf #{downloaded_file}`
+        `mv neo4j-#{edition} #{install_location}`
+        puts 'Neo4j Installed in to neo4j directory.'
       end
 
       def request_url(url)
