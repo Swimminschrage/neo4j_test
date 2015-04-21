@@ -9,6 +9,7 @@ module Neo4jTestServer
   class << self
     attr_writer :neo4j_startup_timeout
     attr_writer :server
+    attr_accessor :edition
 
     def neo4j_startup_timeout
       @neo4j_startup_timeout ||= 30
@@ -54,7 +55,11 @@ module Neo4jTestServer
     end
 
     def server
-      @server ||= Neo4jTest::Server.new
+      @server ||= Neo4jTest::Server.new edition
+    end
+
+    def edition
+      @edition ||= 'community-2.2.0'
     end
 
     def session

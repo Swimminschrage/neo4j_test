@@ -33,6 +33,17 @@ describe 'Neo4jTest' do
         expect { Neo4jTestServer.start_neo4j_server }.to raise_error(Neo4jTestServer::TimeoutError)
       end
     end
+
+    describe '#edition' do
+      it 'allows the user to specify the edition to install' do
+        edition = 'community-2.0.4'
+        allow(Neo4jTest::Installer).to receive(:bootstrap)
+        Neo4jTestServer.edition = edition
+
+        expect(Neo4jTest::Installer).to receive(:bootstrap).with('community-2.0.4')
+        Neo4jTestServer.server.bootstrap
+      end
+    end
   end
 
   describe '::Installer' do

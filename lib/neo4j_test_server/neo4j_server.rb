@@ -15,10 +15,9 @@ module Neo4jTest
 
     attr_writer :neo4j_data_dir, :neo4j_home, :neo4j_jar, :bind_address, :port
 
-    def initialize(*args)
+    def initialize(ed = 'community-2.2.0')
       ensure_java_installed
-      self.edition = 'community-2.2.0'
-      super(*args)
+      self.edition = ed
     end
 
     def to_s
