@@ -30,6 +30,9 @@ This gem will automatically startup a Neo4j server running locally for testing p
 This gem also provides rspec hooks for tests that require Neo4j without requiring the server to be started for all of
 your tests.
 
+By default, the gem will download and run the "Community-2.2.0" version of Neo4j, see below for changing the edition
+used.
+
 ## Writing tests that use Neo4jTestServer
 
 In `spec_helper.rb`
@@ -50,4 +53,13 @@ describe 'My Tests' do
 
     end
 end
+```
+
+## Using a different version of Neo4j
+
+Before your tests run, call
+```ruby
+require 'neo4j_test_server'
+
+Neo4jTestServer.edition = 'community-2.0.4' # Or whatever version you'd like to use
 ```
