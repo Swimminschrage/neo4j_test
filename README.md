@@ -19,7 +19,7 @@ gem "neo4j_test_server"
 In `spec_helper.rb`
 
 ```
-require 'sunspot_test/rspec'
+require 'neo4j_test_server/rspec'
 ```
 
 ## What does it do?
